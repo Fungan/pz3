@@ -30,29 +30,26 @@ btree* create(FILE* file)
 	return d;
 }
 
-void NLR_rec(btree* tree)
+void preorder(btree* tree)
 {
 	if (tree)
 	{
 		printf("%c", tree->element);
-		NLR_rec(tree->left);
-		NLR_rec(tree->right);
+		preorder(tree->left);
+		preorder(tree->right);
 	}
 }
 
-void NLR(btree* tree)
+void iterativePreorder(btree* tree)
 {
 	queue_pointers* queue;
 	initialize(&queue);
-	char way = 1;
-	char doprint = 1;
 	while (tree)
 	{
-		if (doprint)printf("%c", tree->element);
-		doprint = 1;
+		printf("%c", tree->element);
 		if (tree->left && tree->right)
 		{
-			push(queue, tree, 1);
+			push(queue, tree->right, 1);
 			tree = tree->left;
 		}
 		else
@@ -62,19 +59,86 @@ void NLR(btree* tree)
 				if (isempty(queue))
 				{
 					pop(queue, &tree);
-					if (tree->left)
-					{
-						way = 2;
-					}
 				}
 				else
 				{
 					tree = nullptr;
 				}
 			}
+		}
+	}
+}
+
+void inorder(btree* tree)
+{
+	if (tree)
+	{
+		inorder(tree->left);
+		printf("%c", tree->element);
+		inorder(tree->right);
+	}
+}
+
+void iterativeInorder(btree* tree)
+{
+	queue_pointers* queue;
+	initialize(&queue);
+	while (tree)
+	{
+		if (tree->left && tree->right)
+		{
+			push(queue, tree, 1);
+			tree = tree->left;
+		}
+		else
+		{
+			if (!tree->left && !tree->right)
+			{
+				printf("%c", tree->element);
+				if (isempty(queue))
+				{
+					pop(queue, &tree);
+					printf("%c", tree->element);
+					tree = tree->right;
+				}
+				else
+				{
+					tree = nullptr;
+				}
+			}
+		}
+	}
+}
+
+void postorder(btree* tree)
+{
+	if (tree)
+	{
+		postorder(tree->left);
+		postorder(tree->right);
+		printf("%c", tree->element);
+	}
+}
+
+void iterativePostorder(btree* tree)
+{
+	queue_pointers* queue;
+	initialize(&queue);
+	btree* last = nullptr;
+	while (tree)
+	{
+		if (tree->left && tree->right)
+		{
+			if (tree->right == last)
+			{
+				last = tree;
+				printf("%c", tree->element);
+				if (!pop(queue, &tree)) tree = nullptr; 
+			}
 			else
 			{
-				if (tree->left != nullptr)
+				push(queue, tree, 1);
+				if (last != tree->left)
 				{
 					tree = tree->left;
 				}
@@ -84,35 +148,21 @@ void NLR(btree* tree)
 				}
 			}
 		}
+		else
+		{
+			if (!tree->left && !tree->right)
+			{
+				printf("%c", tree->element);
+				if (isempty(queue))
+				{
+					last = tree;
+					pop(queue, &tree);
+				}
+				else
+				{
+					tree = nullptr;
+				}
+			}
+		}
 	}
-}
-
-void LNR_rec(btree* tree)
-{
-	if (tree)
-	{
-		LNR_rec(tree->left);
-		printf("%c", tree->element);
-		LNR_rec(tree->right);
-	}
-}
-
-void LNR(btree* tree)
-{
-
-}
-
-void LRN_rec(btree* tree)
-{
-	if (tree)
-	{
-		LRN_rec(tree->left);
-		LRN_rec(tree->right);
-		printf("%c", tree->element);
-	}
-}
-
-void LRN(btree* tree)
-{
-
 }

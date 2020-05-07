@@ -11,9 +11,9 @@ struct btree
 };
 
 btree* create(FILE* file);
-void NLR_rec(btree* tree);
-void NLR(btree* tree);
-void LNR_rec(btree* tree);
-void LNR(btree* tree);
-void LRN_rec(btree* tree);
-void LRN(btree* tree);
+void preorder(btree* tree);
+void iterativePreorder(btree* tree);
+void inorder(btree* tree);
+void iterativeInorder(btree* tree);
+void postorder(btree* tree);
+void iterativePostorder(btree* tree);
