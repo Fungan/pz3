@@ -1,0 +1,12 @@
+﻿  pz2_main.cpp
+  pz2_queue.cpp
+C:\Users\ac\source\repos\laba\pz2_queue.cpp(106,13): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "type"
+C:\Users\ac\source\repos\laba\pz2_queue.cpp(106,13): warning C4313: printf_s: конфликт "%d" в строке формата с аргументом 1 типа "type"
+  pz3_btree.cpp
+C:\Users\ac\source\repos\laba\pz3_btree.cpp(8,1): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message : см. объявление "fscanf"
+C:\Users\ac\source\repos\laba\pz3_btree.cpp(12,1): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message : см. объявление "fscanf"
+C:\Users\ac\source\repos\laba\pz3_btree.cpp(16,1): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1197): message : см. объявление "fscanf"
+  queue.cpp
